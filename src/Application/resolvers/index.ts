@@ -1,18 +1,20 @@
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+import { cityResolver } from "./cityResolver";
+import { launchResolver } from "./launchResolver";
+import { launchesResolver } from "./launchesResolver";
+import { rocketResolver } from "./rocketResolver";
+import { rocketsResolver } from "./rocketsResolver";
 
-// Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
 export const resolvers = {
+  Launchpad: {
+    city: async (parent: any, args: any, context: any, info: any) => {
+      return await fetch(`https://api.geodatasource.com/city?key=50QWVCVPE7ID8PGZNTUPYTKBPANQ5BTH&format=json&lat=${parent.latitude}&lng=${parent.longitude}`).then((res) => res.json());
+    }
+  },
   Query: {
-    books: () => books,
+    launches: launchesResolver,
+    launch: launchResolver,
+    rockets: rocketsResolver,
+    rocket: rocketResolver,
+    city: cityResolver,
   },
 };
