@@ -4,6 +4,7 @@
   "description": "GraphQL example using SpaceX public API",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "compile": "esbuild ./src/index.ts --bundle --outdir=dist --platform=node",
     "start": "yarn compile && node ./dist/index.js",
     "test": "jest"
@@ -27,6 +28,6 @@
     "esbuild-envfile-plugin": "^1.0.5",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }
